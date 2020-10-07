@@ -32,12 +32,26 @@ public class StringMethods {
 
 	// Given Strings s1 and s2, return the longer String
 	public static String longerString(String s1, String s2) {
-		return null;
+		int counter1=0;
+		int counter2=0;	
+		for (int i = 0; i < s1.length(); i++) {
+			counter1++;
+		}for (int i = 0; i < s2.length(); i++) {
+			counter2++;
+		}
+		if(counter1>counter2) {
+			return s1;
+		}else {
+			return s2;
+		}
 	}
 
 	
 	// if String s contains the word "underscores", change all of the spaces to underscores
 	public static String formatSpaces(String s) {
+		if(s.contains("underscores")) {
+			s.replace(' ', '_');
+		}
 		return null;
 	}
 
@@ -47,28 +61,41 @@ public class StringMethods {
 	// assume there is only one space between the first and last name
 	public static String lineLeader(String s1, String s2, String s3) {
 		return null;
+		not done
 	}
 	
 	
 	// Return the sum of all numerical digits in the String
 	public static int numeralSum(String s) {
-		return 0;
+		int fin=0;
+		for (int i = 0; i < s.length(); i++) {
+			char num=s.charAt(i);
+			if(Character.isDigit(num)) {
+			fin=fin+num;
+		}}
+		return fin;
 	}
 	
 	
 	// Return the number of times String substring appears in String s
 	public static int substringCount(String s, String substring) {
+		/*
+		 * int num=0; if(s.contains(substring)) { num }
+		 */
 		return 0;
+		not done
 	}
 
 	// Call Utitilities.encrypt to encrypt String s
 	public static String encrypt(String s, char key) {
+		Utilities.encrypt(String s, key);
 		return null;
 	}
 
 	// Call Utilities.decrypt to decrypt the cyphertext
 	public static String decrypt(String s, char key) {
 		return null;
+		not done
 	}
 
 
@@ -76,6 +103,7 @@ public class StringMethods {
 	// You can assume there are no punctuation marks between words
 	public static int wordsEndsWithSubstring(String s, String substring) {
 		return 0;
+		not done
 	}
 	
 
@@ -83,6 +111,7 @@ public class StringMethods {
 	// of String substring and the final occurrence
 	// You can assume that substring will appear at least twice
 	public static int distance(String s, String substring) {
+		not done
 		return 0;
 	}
 
