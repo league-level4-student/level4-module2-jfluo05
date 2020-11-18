@@ -1,5 +1,6 @@
 package StringMethods;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Base64;
 
@@ -59,51 +60,78 @@ public class StringMethods {
 	// Return the name of the person whose LAST name would appear first if they were in alphabetical order
 	// You cannot assume there are no extra spaces around the name, but you can
 	// assume there is only one space between the first and last name
-	public static String lineLeader(String s1, String s2, String s3) {
-		return null;
-		not done
-	}
-	
+	/*
+	 * public static String lineLeader(String s1, String s2, String s3) {
+	 * 
+	 * if(s1.indexOf(0)!=' ') { if(s1.contains(" ")) {
+	 * 
+	 * } } return null; }
+	 */
 	
 	// Return the sum of all numerical digits in the String
 	public static int numeralSum(String s) {
 		int fin=0;
+		ArrayList <Integer> nums=new ArrayList <Integer>();
 		for (int i = 0; i < s.length(); i++) {
-			char num=s.charAt(i);
-			if(Character.isDigit(num)) {
-			fin=fin+num;
-		}}
+			if(Character.isDigit(s.charAt(i))) {
+				nums.add(Character.getNumericValue(s.charAt(i)));
+			}
+		}for (int i = 0; i < nums.size(); i++) {
+			fin=fin+nums.get(i);
+		}
+		
 		return fin;
 	}
 	
 	
 	// Return the number of times String substring appears in String s
+	
 	public static int substringCount(String s, String substring) {
-		/*
-		 * int num=0; if(s.contains(substring)) { num }
-		 */
-		return 0;
-		not done
-	}
+	  
+	  int num=0;
+	  int subLength=substring.length();
+	  
+	  for (int i = 0; i < s.length()-subLength+1; i++) {
+		  if(s.substring(i, i+subLength).equals(substring)) {
+			  num++; 
+			  } 
+		  }
+	  System.out.println(num);
+	  
+	  return num;
+	  
+	  }
 
 	// Call Utitilities.encrypt to encrypt String s
 	public static String encrypt(String s, char key) {
-		Utilities.encrypt(String s, key);
+		byte b=7;
+		
+		Utilities.encrypt(s.getBytes(), b);
 		return null;
 	}
 
 	// Call Utilities.decrypt to decrypt the cyphertext
 	public static String decrypt(String s, char key) {
 		return null;
-		not done
+		//not done
 	}
 
 
 	// Return the number of words in String s that end with String substring
 	// You can assume there are no punctuation marks between words
 	public static int wordsEndsWithSubstring(String s, String substring) {
-		return 0;
-		not done
+		int subLength=substring.length();
+		int count=0;
+		  String[] words=s.split(" ");
+		  for (int i = 0; i < words.length; i++) {
+			  if(subLength<=words[i].length()) {
+			  if(words[i].substring(words[i].length()-subLength,words[i].length()).equals(substring)) {
+				  count++;
+			  }
+			  }
+		}
+			
+			  return count;
 	}
 	
 
@@ -111,8 +139,26 @@ public class StringMethods {
 	// of String substring and the final occurrence
 	// You can assume that substring will appear at least twice
 	public static int distance(String s, String substring) {
-		not done
-		return 0;
+		
+		  int subLength=substring.length();
+		  int firstOcc=0;
+		  int secondOcc = 0;
+
+		  for (int i = 0; i < s.length()-subLength+1; i++) {
+			  if(s.substring(i, i+subLength).equals(substring)) {
+				   firstOcc=i+subLength;
+				   break;
+				  } 
+			  }
+		  for (int i = s.length()-subLength; i > 0; i--) {
+			  if(s.substring(i,i+subLength).equals(substring)) {
+				   secondOcc=i;
+				   break;
+				  } 
+			  }
+		  System.out.println();
+		  
+		  return secondOcc-firstOcc;
 	}
 
 
@@ -120,7 +166,31 @@ public class StringMethods {
 	// palindromes are words or phrases are read the same forward as backward.
 	// HINT: ignore/remove all punctuation and spaces in the String
 	public static boolean palindrome(String s) {
-		return true;
+		int counter=0;
+		String f= "";
+		for (int i = 0; i < s.length(); i++) {
+			if(Character.isLetter(s.charAt(i))) {
+				f+=s.charAt(i)+"";
+			}
+		}
+		
+		f=f.toLowerCase();
+
+		int halfWord=f.length()/2;
+		for (int i = 0; i < halfWord; i++) {
+			char first= f.charAt(i);
+			char last=f.charAt(f.length()-1-i);
+			if(first==last) {
+				counter++;
+
+				}
+		}
+	
+		if(counter>=halfWord) {
+			return true;
+		}
+		return false;
+		
 	}
 	
 }
